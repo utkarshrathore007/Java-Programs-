@@ -1,0 +1,65 @@
+import java.util.*;
+
+import javax.xml.transform.Source;
+public class SunAndPlanetGear {
+  
+  public static void main (String args[]){
+
+    System.out.println("Program for Sun and Planet Gear: ");
+    System.out.println("Note: outer gear stationary");
+    System.out.println();
+
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Enter pitch circle diameter for internally toothed gear : "); //dD
+ 
+    float dD = sc.nextFloat();
+    if (dD <=0){
+      System.out.println("wrong input");
+      return;
+    }
+
+    System.out.println("enter module for internally toothed gear : "); //m
+    float m = sc.nextFloat();
+    if (dD <=0){
+      System.out.println("wrong input");
+      return;
+    }
+     
+    System.out.println("Enter values for speed ratio (i.e. N1/N2) , N1<=N2");
+    System.out.println("N1 (i.e. speed of spider) :");
+    float N1 = sc.nextFloat();
+    if (dD <=0){
+      System.out.println("wrong input");
+      return;
+    }
+
+    System.out.println("N2 (i.e. speed of sun wheel):");
+    float N2 = sc.nextFloat();
+    if (dD <=0){
+      System.out.println("wrong input");
+      return;
+    }
+
+    float x; float y = N1; 
+    float sumRev = N2;
+    x = sumRev - y;
+
+    float Tb, Td, Tc;
+    float z = x/y;
+
+    Td = dD/m; //number of teeths for ring gear
+    Tb = Td/z; //number of teeths for sun gear
+    Tc = (Td - Tb)/2; //number of teeths for planet gears
+
+    float w = N1 * (Td / Tb);
+    float speedSun = w+y; 
+
+    System.out.println();
+    System.out.println("The suitable number of teeths for ring gear , sun gear and planet gears are : ");
+    System.out.println((int)Td + ", " + (int)Tb + ", " + (int)Tc);
+    System.out.println("The speed of Sun gear is : ");
+    System.out.println(speedSun);
+  }
+}
+     
+
